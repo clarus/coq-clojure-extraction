@@ -6,5 +6,22 @@
 (*         *       GNU Lesser General Public License Version 2.1        *)
 (************************************************************************)
 
-val ocaml_descr : Miniml.language_descr
+(*i camlp4deps: "parsing/grammar.cma" i*)
 
+(* ML names *)
+
+open Vernacexpr
+open Pcoq
+open Genarg
+open Pp
+open Names
+open Nameops
+open Table
+open ClojureExtractionEnv
+
+(* Extraction commands *)
+
+(*VERNAC COMMAND EXTEND ClojureExtraction
+(* Extraction in the Coq toplevel *)
+| [ "ClojureExtraction" global(x) ] -> [ simple_extraction x ]
+END*)

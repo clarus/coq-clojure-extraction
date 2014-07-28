@@ -13,7 +13,6 @@ open Nameops
 open Namegen
 open Summary
 open Libobject
-open Goptions
 open Libnames
 open Util
 open Pp
@@ -437,11 +436,11 @@ let info_file f =
 (* The objects defined below should survive an arbitrary time,
    so we register them to coq save/undo mechanism. *)
 
-let my_bool_option name initval =
+(*let my_bool_option name initval =
   let flag = ref initval in
   let access = fun () -> !flag in
-  let _ = declare_bool_option
-    {optsync = true;
+  let _ = Goptions.declare_bool_option
+    {Goptions.optsync = true;
      optdepr = false;
      optname = "Extraction "^name;
      optkey = ["Extraction"; name];
@@ -464,7 +463,7 @@ let type_expand = my_bool_option "TypeExpand" true
 
 (*s Extraction KeepSingleton *)
 
-let keep_singleton = my_bool_option "KeepSingleton" false
+let keep_singleton = my_bool_option "KeepSingleton" false*)
 
 (*s Extraction Optimize *)
 
@@ -513,23 +512,23 @@ let chg_flag n = int_flag_ref := n; opt_flag_ref := flag_of_int n
 
 let optims () = !opt_flag_ref
 
-let _ = declare_bool_option
-	  {optsync = true;
+(*let _ = Goptions.declare_bool_option
+	  {Goptions.optsync = true;
            optdepr = false;
 	   optname = "Extraction Optimize";
 	   optkey = ["Extraction"; "Optimize"];
 	   optread = (fun () -> !int_flag_ref <> 0);
 	   optwrite = (fun b -> chg_flag (if b then int_flag_init else 0))}
 
-let _ = declare_int_option
-          { optsync = true;
+let _ = Goptions.declare_int_option
+          { Goptions.optsync = true;
             optdepr = false;
             optname = "Extraction Flag";
             optkey = ["Extraction";"Flag"];
             optread = (fun _ -> Some !int_flag_ref);
             optwrite = (function
                           | None -> chg_flag 0
-                          | Some i -> chg_flag (max i 0))}
+                          | Some i -> chg_flag (max i 0))}*)
 
 
 (*s Extraction Lang *)

@@ -8,5 +8,6 @@
 *.cmxs
 *.cmxa
 *.d
+*.glob
 Makefile
 Makefile.bak

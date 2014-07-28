@@ -100,19 +100,19 @@ val reset_tables : unit -> unit
 
 (*s AccessOpaque parameter *)
 
-val access_opaque : unit -> bool
+(* val access_opaque : unit -> bool *)
 
 (*s AutoInline parameter *)
 
-val auto_inline : unit -> bool
+(* val auto_inline : unit -> bool *)
 
 (*s TypeExpand parameter *)
 
-val type_expand : unit -> bool
+(* val type_expand : unit -> bool *)
 
 (*s KeepSingleton parameter *)
 
-val keep_singleton : unit -> bool
+(* val keep_singleton : unit -> bool *)
 
 (*s Optimize parameter *)
 
