@@ -7,3 +7,6 @@
 *.cmx
 *.cmxs
 *.cmxa
+*.d
+Makefile
+Makefile.bak

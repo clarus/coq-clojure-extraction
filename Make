@@ -1,0 +1,63 @@
+# Includes
+##########
+-I src
+-R . ClojureExtraction
+
+# Targets
+#########
+CMX_TARGETS = "\
+  src/big.cmx \
+  src/common.cmx \
+  src/extract_env.cmx \
+  src/extraction.cmx \
+  src/g_extraction.cmx \
+  src/haskell.cmx \
+  src/mlutil.cmx \
+  src/modutil.cmx \
+  src/ocaml.cmx \
+  src/scheme.cmx \
+  src/table.cmx"
+
+CMO_TARGETS = $(CMX_TARGETS:.cmx=.cmo)
+
+# Native compilation options
+############################
+OPT_OPTIONS = "$(CAMLOPTLINK) $(ZDEBUG) $(ZFLAGS) -shared -o $@ $^"
+-custom $(OPT_OPTIONS) $(CMX_TARGETS) src/extractionPlugin.cmxs
+
+# Bytecode compilation options
+##############################
+-custom "$(CAMLLINK) -g -a -o $@ $^" $(CMO_TARGETS) src/extractionPlugin.cma
+
+# Custom variables
+##################
+COQEPLUGIN = "src/extractionPlugin.cma"
+COQEPLUGINOPT = "src/extractionPlugin.cmxs"
+COQDOC = "$(COQBIN)coqdoc -interpolate -utf8"
+CAMLP4OPTIONS = "-loc loc"
+
+# Compilation units
+###################
+src/big.ml
+src/common.ml
+src/common.mli
+src/extract_env.ml
+src/extract_env.mli
+src/extraction.ml
+src/extraction.mli
+src/extraction_plugin.mllib
+src/g_extraction.ml4
+src/haskell.ml
+src/haskell.mli
+src/miniml.mli
+src/mlutil.ml
+src/mlutil.mli
+src/modutil.ml
+src/modutil.mli
+src/ocaml.ml
+src/ocaml.mli
+src/scheme.ml
+src/scheme.mli
+src/table.ml
+src/table.mli
+# vo.itarget
